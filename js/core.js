@@ -17,12 +17,16 @@
         
         canvas: false,
         context: false,
+        dimensions: [],
         
         init: function() {
             
             // Set the context
             this.canvas  = doc.getElementById('canvax');
             this.context = this.canvas.getContext('2d');
+            
+            // Set the current dimensions
+            this.dimensions = [this.canvas.width, this.canvas.height];
           
             return this;
         }
@@ -64,6 +68,13 @@
         this.context.stroke();
         
         return this;
+    };
+    
+    // Reset method
+    canvax.fn.reset = function() {
+        
+        // Reset by re-setting the dimensions
+        this.canvas.width = this.dimensions[0];
     };
     
     // Link canvax function to global scope

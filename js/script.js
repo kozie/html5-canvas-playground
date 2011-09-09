@@ -12,7 +12,7 @@
             .drawSquare(580, 410, 50, 50)
             .drawSquare(290, 290, 50, 50)
             
-            // Draw a statisticly-esk line
+            // Draw a statisticely-like line
             .drawLine(0, 50, [
                 [20, 30],
                 [50, 240],
