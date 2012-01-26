@@ -10,23 +10,19 @@
         return new canvax.fn.init();
     }
     
-    // Set iniitial canvax function
+    // Set initial canvax function
     canvax.fn = canvax.protoype = {
       
         constructor: canvax,
         
         canvas: false,
         context: false,
-        dimensions: [],
         
         init: function() {
             
             // Set the context
             this.canvas  = doc.getElementById('canvax');
             this.context = this.canvas.getContext('2d');
-            
-            // Set the current dimensions
-            this.dimensions = [this.canvas.width, this.canvas.height];
           
             return this;
         }
@@ -37,13 +33,12 @@
     
     // Draw square method
     canvax.fn.drawSquare = function(x, y, w, h) {
-        
         this.context.fillRect(x, y, w, h);
         return this;
     };
     
-    // Draw line method
-    canvax.fn.drawLine = function(x, y, locs, color, width) {
+    // Draw lines method
+    canvax.fn.drawLines = function(x, y, locs, color, width) {
       
         // Set start
         this.context.moveTo(x, y);
@@ -53,13 +48,12 @@
         if (width === undef) width = 1;
         
         // Loop through the positions and draw
-        var idx, entry;
-        for (idx in locs) {
-            
-            entry = locs[idx];
+        var i, entry, l=locs.length;
+        for (i = 0; i < l; i++) {
+            entry = locs[i];
             x = entry[0];
             y = entry[1];
-            
+            console.log('Moving line to '+x+', '+y);
             this.context.lineTo(x, y);
         }
         
@@ -70,11 +64,21 @@
         return this;
     };
     
-    // Reset method
+    // Retrieves the width of the canvas
+    canvax.fn.getWidth = function() {
+        return this.canvas.width;
+    };
+    
+    // Retrieves the height of the canvas
+    canvax.fn.getHeight = function() {
+        return this.canvas.height;
+    };
+    
+    // Reset the contents of the canvas
     canvax.fn.reset = function() {
         
         // Reset by re-setting the dimensions
-        this.canvas.width = this.dimensions[0];
+        this.canvas.width = this.canvas.width;
     };
     
     // Link canvax function to global scope
