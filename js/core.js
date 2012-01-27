@@ -53,7 +53,7 @@
             entry = locs[i];
             x = entry[0];
             y = entry[1];
-            console.log('Moving line to '+x+', '+y);
+            
             this.context.lineTo(x, y);
         }
         

@@ -1,6 +1,8 @@
 (function(win, doc, undef) {
     
-    var locations = new Array();
+    var locations = new Array(),
+        cw = canvax().getWidth(),
+        ch = canvax().getHeight();
     
     win.onload = function() {
         
@@ -8,18 +10,18 @@
         var i, x, y,
             angle = 0,
             inc = Math.PI / 100,
-            w = canvax().getWidth() / 100,
-            h = canvax().getHeight() / 100;
+            w = cw / 100,
+            h = ch / 100;
         
         for (i = 0; i <= 100; i++) {
             x = i * w;
-            y = canvax().getHeight() - ((Math.sin(angle) * 100) * h);
+            y = ch - ((Math.sin(angle) * 99) * h);
             
             locations.push([x, y]);
             angle += inc;
         }
         
-        canvax().drawLines(0, canvax().getHeight(), locations, null, 3);
+        canvax().drawLines(0, ch, locations, undef, 3);
       
         /*canvax()
             // Draw some random squares
